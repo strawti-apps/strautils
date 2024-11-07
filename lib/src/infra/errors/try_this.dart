@@ -6,7 +6,7 @@ import 'package:strawti_utils/src/infra/models/response_model.dart';
 
 typedef TryThisFunction<T> = FStrautilsResponse<T> Function();
 
-/// StrawtiUtisTryThis é uma interface para ser utilizada principalmente
+/// StrautilsTryThis é uma interface para ser utilizada principalmente
 /// em Repositórios.
 /// [TryThisFunction] é FStrautilsResponse<T> Function().
 /// [callback] é o que você deseja executar.
@@ -15,7 +15,7 @@ typedef TryThisFunction<T> = FStrautilsResponse<T> Function();
 /// Caso queira uma nova tentativa, implemente o [tryAgain].
 /// Exemplo:
 /// ```dart
-/// class LoginRepository extends StrawtiUtisTryThis {
+/// class LoginRepository extends StrautilsTryThis {
 ///   FStrautilsResponse<UserModel> login(String email, String password) {
 ///      return await tryThis(() {
 ///          ...
@@ -30,7 +30,7 @@ typedef TryThisFunction<T> = FStrautilsResponse<T> Function();
 /// [SocketException], [NoSuchMethodError], [TimeoutException] e [FormatException].
 /// Caso o [onCatch] for null, um [StrautilsResponse.error] é retornado por padrão.
 /// As mensagens retornadas são definidas em [StrautilsDefaultErrors].
-abstract class StrawtiUtisTryThis {
+abstract class StrautilsTryThis {
   FStrautilsResponse<T> tryThis<T>(
     TryThisFunction<T> callback, {
     TryThisFunction<T>? onCatch,

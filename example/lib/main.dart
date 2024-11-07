@@ -1,5 +1,8 @@
 import 'package:example/repositories/login_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:strawti_utils/strawti_utils.dart';
+
+import 'repositories/products_repository.dart';
 
 void main() {
   runApp(const MyApp());
@@ -72,6 +75,54 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               message,
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            StrautilsResponseFutureBuilder(
+              futureResponse: ProductsRepository().getAllProducts(),
+              // Opcional
+              errorBuilder: (
+                context,
+                error,
+                message,
+                isResponseError,
+                tryAgain,
+              ) {
+                return Column(
+                  children: [
+                    Text("$message => $error"),
+                    TextButton(
+                      onPressed: tryAgain,
+                      child: const Text("Tentar novamente"),
+                    ),
+                  ],
+                );
+              },
+              // Opcional
+              loadingBuilder: (context) => const CircularProgressIndicator(),
+              // Opcional
+              warningBuilder: (context, message, tryAgain) {
+                return Column(
+                  children: [
+                    Text(message),
+                    TextButton(
+                      onPressed: tryAgain,
+                      child: const Text("Tentar novamente"),
+                    ),
+                  ],
+                );
+              },
+              // Opcional
+              emptyBuilder: (context) => const Text("Sem produtos"),
+              // Requerido
+              builder: (context, products) {
+                return ListView.builder(
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(products[index]),
+                    );
+                  },
+                );
+              },
             ),
           ],
         ),

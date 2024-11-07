@@ -7,3 +7,6 @@ export 'src/infra/models/response_model.dart';
 
 // Others
 export 'src/others/ternary_clean.dart';
+
+// Widgets
+export 'src/widgets/response_future_builder.dart';

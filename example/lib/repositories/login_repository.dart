@@ -1,6 +1,6 @@
 import 'package:strawti_utils/strawti_utils.dart';
 
-class LoginRepository extends StrawtiUtisTryThis {
+class LoginRepository extends StrautilsTryThis {
   FStrautilsResponse<String> login(String email, String password) async {
     return tryThis(
       () async {

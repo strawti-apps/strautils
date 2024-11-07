@@ -34,7 +34,7 @@ final class StrautilsResponse<T> {
   ///    }
   /// }
   /// ```
-  final Future<StrautilsResponse<T>> Function() tryAgain;
+  final FStrautilsResponse<T> Function() tryAgain;
 
   /// status é [StrautilsResponseTypes.success].
   bool get success => status == StrautilsResponseTypes.success;
@@ -110,5 +110,10 @@ final class StrautilsResponse<T> {
         return await tryAgain();
       },
     );
+  }
+
+  @override
+  String toString() {
+    return "StrautilsResponse(message: $message, status: $status, data: $data)";
   }
 }
