@@ -1,6 +1,16 @@
 import 'dart:developer';
 
+/// Mensagens de erros padronizadas!
+/// Padrões criados para:
+/// [SocketException]
+/// [NoSuchMethodError]
+/// [TimeoutException]
+/// [FormatException]
+/// 
+/// Mais um [StrautilsDefaultErrors.unknowError]
 class StrautilsDefaultErrors {
+
+  /// [action] é a ação que está sendo feita. Ex. 'fazer login'
   static String unknowError(String action, [Object? error, StackTrace? stack]) {
     log("Action: $action => $error ($stack)", name: "StrautilsDefaultErrors");
     return 'Ocorreu um erro ao tentar $action';
