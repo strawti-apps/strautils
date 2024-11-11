@@ -89,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return Column(
                   children: [
                     Text("$message => $error"),
+                    Text("isResponseError: $isResponseError"),
                     TextButton(
                       onPressed: tryAgain,
                       child: const Text("Tentar novamente"),
@@ -96,8 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 );
               },
-              // Opcional
-              loadingBuilder: (context) => const CircularProgressIndicator(),
               // Opcional
               warningBuilder: (context, message, tryAgain) {
                 return Column(
@@ -112,6 +111,14 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               // Opcional
               emptyBuilder: (context) => const Text("Sem produtos"),
+              // Opcional
+              onMaxAttempts: (context, currentAttempt, maxAttempts) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Limite de tentativas excedido!"),
+                  ),
+                );
+              },
               // Requerido
               builder: (context, products) {
                 return ListView.builder(

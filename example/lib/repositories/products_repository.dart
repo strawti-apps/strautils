@@ -12,17 +12,21 @@ class ProductsRepository extends StrautilsTryThis {
         if (data.first == 1) {
           return StrautilsResponse.error(
             "Uma mensagem de erro retornada da API",
+            tryAgain: () => getAllProducts(),
           );
         }
 
         if (data.first == 2) {
           return StrautilsResponse.warning(
             "Você precisa especificar o usuário",
+            tryAgain: () => getAllProducts(),
           );
         }
 
         if (data.first == 3) {
-          throw const SocketException("Sem internet");
+          throw const SocketException(
+            "Sem internet",
+          );
         }
 
         return StrautilsResponse.success([""]);

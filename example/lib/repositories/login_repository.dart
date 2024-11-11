@@ -4,7 +4,10 @@ class LoginRepository extends StrautilsTryThis {
   FStrautilsResponse<String> login(String email, String password) async {
     return tryThis(
       () async {
-        return StrautilsResponse.success('token');
+        return StrautilsResponse.success(
+          'token',
+          message: 'Login realizado!',
+        );
       },
       tryAgain: () => login(email, password),
       action: 'fazer login',
