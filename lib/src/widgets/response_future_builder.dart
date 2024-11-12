@@ -53,7 +53,6 @@ class StrautilsResponseFutureBuilder<T> extends StatefulWidget {
     BuildContext context,
     Object? error,
     String message,
-    bool isResponseError,
     void Function() tryAgain,
   )? errorBuilder;
 
@@ -132,7 +131,6 @@ class _ResponseFutureBuilderState<T>
                   context,
                   snapshot.error,
                   "Ocorreu um erro interno!",
-                  false,
                   () => tryAgain(null),
                 );
               }
@@ -152,7 +150,6 @@ class _ResponseFutureBuilderState<T>
                   context,
                   snapshot.error,
                   response.message,
-                  true,
                   () => tryAgain(response.tryAgain),
                 );
               }
