@@ -37,6 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final _repository = LoginRepository();
 
   Future<void> login() async {
+    print(StrautilsDateTimeHelper.nowWithoutTime);
+
     var response = await _repository.login("email", "password");
 
     setState(() {
@@ -83,13 +85,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 context,
                 error,
                 message,
-                isResponseError,
                 tryAgain,
               ) {
                 return Column(
                   children: [
                     Text("$message => $error"),
-                    Text("isResponseError: $isResponseError"),
                     TextButton(
                       onPressed: tryAgain,
                       child: const Text("Tentar novamente"),
