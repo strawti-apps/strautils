@@ -16,3 +16,4 @@ export 'src/helpers/datetime_helper.dart';
 
 // Packages
 export 'src/packages/strautils_in_app_review.dart';
+export 'src/packages/strautils_in_app_update.dart';
