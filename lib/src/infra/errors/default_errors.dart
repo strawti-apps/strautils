@@ -13,7 +13,7 @@ class StrautilsDefaultErrors {
   /// [action] é a ação que está sendo feita. Ex. 'fazer login'
   static String unknowError(String action, [Object? error, StackTrace? stack]) {
     log("Action: $action => $error ($stack)", name: "StrautilsDefaultErrors");
-    return 'Ocorreu um erro ao tentar $action';
+    return 'Não foi possível $action';
   }
 
   static const socketException =
