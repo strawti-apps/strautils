@@ -13,3 +13,6 @@ export 'src/widgets/response_future_builder.dart';
 
 // Helpers
 export 'src/helpers/datetime_helper.dart';
+
+// Packages
+export 'src/packages/strautils_in_app_review.dart';

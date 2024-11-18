@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  get_storage: ^2.1.1
+  in_app_review: ^2.0.9
+
   # path: ^1.8.0
 
 dev_dependencies:
