@@ -33,7 +33,7 @@ typedef TryThisFunction<T> = FStrautilsResponse<T> Function();
 abstract class StrautilsTryThis {
   FStrautilsResponse<T> tryThis<T>(
     TryThisFunction<T> callback, {
-    TryThisFunction<T>? onCatch,
+    StrautilsResponse<T> Function(Object error)? onCatch,
     TryThisFunction<T>? tryAgain,
     String action = "realizar operação",
   }) async {
@@ -61,7 +61,7 @@ abstract class StrautilsTryThis {
       );
     } catch (error, stack) {
       if (onCatch != null) {
-        return onCatch();
+        return onCatch(error);
       }
 
       return StrautilsResponse.error(
