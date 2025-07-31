@@ -3,13 +3,28 @@
 Este documento contém exemplos práticos e casos de uso reais do package
 `strawti_utils`.
 
+## 📦 Imports Recomendados
+
+Para diferentes casos de uso, use os imports apropriados:
+
+```dart
+// Para repositórios e infraestrutura
+import 'package:strawti_utils/infra.dart';
+
+// Para utilitários básicos (helpers, ternários)
+import 'package:strawti_utils/utils.dart';
+
+// Para uso completo (incluindo widgets e validadores)
+import 'package:strawti_utils/strawti_utils.dart';
+```
+
 ## 📱 Exemplo Completo de Aplicação
 
 ### 1. Estrutura de Repositório
 
 ```dart
 // lib/repositories/user_repository.dart
-import 'package:strawti_utils/strawti_utils.dart';
+import 'package:strawti_utils/infra.dart';
 
 class UserRepository extends StrautilsTryThis {
   final ApiService _api;
@@ -376,7 +391,7 @@ class HomeScreen extends StatelessWidget {
 
 ```dart
 // lib/utils/date_utils.dart
-import 'package:strawti_utils/strawti_utils.dart';
+import 'package:strawti_utils/utils.dart';
 
 class DateUtils {
   static String formatDate(DateTime date) {
@@ -413,7 +428,7 @@ class DateUtils {
 ```dart
 // lib/widgets/conditional_widget.dart
 import 'package:flutter/material.dart';
-import 'package:strawti_utils/strawti_utils.dart';
+import 'package:strawti_utils/utils.dart';
 
 class ConditionalWidget extends StatelessWidget {
   final bool isLoggedIn;
@@ -474,7 +489,7 @@ class ConditionalWidget extends StatelessWidget {
 
 ```dart
 // lib/repositories/custom_repository.dart
-import 'package:strawti_utils/strawti_utils.dart';
+import 'package:strawti_utils/infra.dart';
 
 class CustomRepository extends StrautilsTryThis {
   FStrautilsResponse<Data> getData() async {

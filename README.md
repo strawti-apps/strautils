@@ -10,13 +10,28 @@ Adicione a dependência ao seu `pubspec.yaml`:
 
 ```yaml
 dependencies:
-    strawti_utils: ^1.0.0
+  strawti_utils: ^1.1.0
 ```
 
 Execute:
 
 ```bash
 flutter pub get
+```
+
+### Importação
+
+O package oferece diferentes arquivos de export:
+
+```dart
+// Importação completa
+import 'package:strawti_utils/strawti_utils.dart';
+
+// Apenas utilitários básicos
+import 'package:strawti_utils/utils.dart';
+
+// Apenas infraestrutura
+import 'package:strawti_utils/infra.dart';
 ```
 
 ## 🚀 Funcionalidades
@@ -254,6 +269,13 @@ class ProductRepository extends StrautilsTryThis {
 - `NoSuchMethodError`: Dados inesperados
 - `TimeoutException`: Timeout de operações
 - `FormatException`: Formato inválido
+- `ArgumentError`: Argumentos inválidos
+- `RangeError`: Índice fora do intervalo
+- `StateError`: Estado inválido
+- `UnsupportedError`: Operação não suportada
+- `ConcurrentModificationError`: Modificação concorrente
+- `OutOfMemoryError`: Memória insuficiente
+- `HttpException`: Erro de comunicação HTTP
 
 #### Mensagens Padronizadas
 
@@ -265,6 +287,9 @@ StrautilsDefaultErrors.unknowError("fazer login");
 StrautilsDefaultErrors.socketException;
 StrautilsDefaultErrors.timeoutException;
 StrautilsDefaultErrors.formatException;
+StrautilsDefaultErrors.argumentError;
+StrautilsDefaultErrors.stateError;
+StrautilsDefaultErrors.httpException;
 ```
 
 ## 🎯 Casos de Uso Comuns

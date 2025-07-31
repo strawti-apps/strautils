@@ -6,6 +6,66 @@ O formato é baseado em
 [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/), e este projeto
 adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.1.0]
+
+### Corrigido
+
+- **Validadores**
+  - Adicionado export dos validadores no arquivo principal `strawti_utils.dart`
+  - Corrigido typo em mensagens de erro ("obrigátorio" → "obrigatório")
+  - Padronizado mensagem de erro do `validateUsername`
+
+### Adicionado
+
+- **Logging**
+  - Adicionado sistema de logging em `StrautilsResponse` com `dart:developer`
+  - Logs automáticos para success, warning e error com contexto
+  - Logging em `StrautilsTryThis` para tratamento customizado de erros
+  - Logs em `StrautilsDefaultErrors` para erros desconhecidos
+
+- **Novos Parâmetros**
+  - Adicionado parâmetro `error` em `StrautilsResponse.error()` para capturar
+    exceções
+  - Novos parâmetros em `validateUsername()`:
+    - `allowToEndWithAPeriod`: Permite username terminando com ponto
+    - `allowToStartWithAPeriod`: Permite username começando com ponto
+    - `maxLength`: Comprimento máximo configurável (padrão: 30)
+
+- **Novas Mensagens de Erro**
+  - `argumentError`: "Um ou mais argumentos fornecidos são inválidos"
+  - `stateError`: "O estado atual não permite esta operação"
+  - `unsupportedError`: "Esta operação não é suportada"
+  - `concurrentModificationError`: "Dados foram modificados durante o
+    processamento"
+  - `outOfMemoryError`: "Memória insuficiente para completar a operação"
+  - `httpException`: "Erro na comunicação com o servidor"
+
+### Melhorado
+
+- **Tratamento de Erros**
+  - Expandido tratamento de exceções em `StrautilsTryThis`:
+    - `ArgumentError`, `RangeError`, `StateError`
+    - `UnsupportedError`, `ConcurrentModificationError`
+    - `OutOfMemoryError`, `HttpException`
+  - Melhorada captura de contexto de erro com stack trace
+
+- **Validadores**
+  - `validateUsername()` agora suporta configurações flexíveis para pontos
+  - Comprimento máximo configurável
+  - Melhor validação de regex para usernames
+
+- **Infraestrutura**
+  - Reorganizada ordem dos exports no arquivo principal `strawti_utils.dart`
+  - Melhorada organização dos imports por categoria (Helpers, Infra, Others,
+    Packages, Validators, Widgets)
+  - Otimizada estrutura de export para melhor legibilidade
+
+- **Documentação**
+  - Atualizada documentação para refletir mudanças na versão 1.1.0
+  - Corrigidas inconsistências entre código e documentação
+  - Adicionada seção sobre diferentes arquivos de export (strawti_utils.dart,
+    utils.dart, infra.dart)
+
 ## [1.0.0] - 2024-01-XX
 
 ### Adicionado

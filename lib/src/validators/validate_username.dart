@@ -2,7 +2,7 @@
 String? validateUsername(
   String? value, {
   String emptyMessage = "Campo obrigatório!",
-  String invalidMessage = "O nome de usuário é inválido!",
+  String invalidMessage = "O username informado é inválido!",
   bool allowToEndWithAPeriod = false,
   bool allowToStartWithAPeriod = false,
   int maxLength = 30,

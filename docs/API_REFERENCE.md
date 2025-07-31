@@ -34,6 +34,7 @@ StrautilsResponse.warning(String message, {
 StrautilsResponse.error(String message, {
   dynamic data,
   Future<StrautilsResponse<T>> Function()? tryAgain,
+  Object? error,
 })
 ```
 
@@ -45,6 +46,7 @@ StrautilsResponse.error(String message, {
 | `data`      | `T?`                               | Dados retornados                           |
 | `message`   | `String`                           | Mensagem para exibição                     |
 | `tryAgain`  | `FStrautilsResponse<T> Function()` | Função para nova tentativa                 |
+| `error`     | `Object?`                          | Exceção capturada (apenas em error)        |
 
 #### Getters
 
@@ -105,7 +107,7 @@ Valida formato de email.
 ```dart
 String? validateEmail(
   String? value, {
-  String emptyMessage = "Campo obrigátorio!",
+  String emptyMessage = "Campo obrigatório!",
   String invalidMessage = "O email informado é inválido!",
 })
 ```
@@ -130,7 +132,7 @@ Valida formato de nome.
 ```dart
 String? validateName(
   String? value, {
-  String emptyMessage = "Campo obrigátorio!",
+  String emptyMessage = "Campo obrigatório!",
   String invalidMessage = "O nome informado é inválido!",
 })
 ```
@@ -155,18 +157,24 @@ Valida formato de username.
 ```dart
 String? validateUsername(
   String? value, {
-  String emptyMessage = "Campo obrigátorio!",
+  String emptyMessage = "Campo obrigatório!",
   String invalidMessage = "O username informado é inválido!",
+  bool allowToEndWithAPeriod = false,
+  bool allowToStartWithAPeriod = false,
+  int maxLength = 30,
 })
 ```
 
 #### Parâmetros
 
-| Parâmetro        | Tipo      | Obrigatório | Descrição                       |
-| ---------------- | --------- | ----------- | ------------------------------- |
-| `value`          | `String?` | ✅          | Username a ser validado         |
-| `emptyMessage`   | `String`  | ❌          | Mensagem para campo vazio       |
-| `invalidMessage` | `String`  | ❌          | Mensagem para username inválido |
+| Parâmetro                 | Tipo      | Obrigatório | Descrição                             |
+| ------------------------- | --------- | ----------- | ------------------------------------- |
+| `value`                   | `String?` | ✅          | Username a ser validado               |
+| `emptyMessage`            | `String`  | ❌          | Mensagem para campo vazio             |
+| `invalidMessage`          | `String`  | ❌          | Mensagem para username inválido       |
+| `allowToEndWithAPeriod`   | `bool`    | ❌          | Permite username terminando com ponto |
+| `allowToStartWithAPeriod` | `bool`    | ❌          | Permite username começando com ponto  |
+| `maxLength`               | `int`     | ❌          | Comprimento máximo (padrão: 30)       |
 
 #### Retorno
 
@@ -374,7 +382,42 @@ Gera mensagem de erro genérica.
 | `error`   | `Object?`     | ❌          | Erro ocorrido                   |
 | `stack`   | `StackTrace?` | ❌          | Stack trace do erro             |
 
-## 🔧 Configurações
+## �� Configurações
+
+### Arquivos de Export
+
+O package oferece diferentes arquivos de export para diferentes necessidades:
+
+#### strawti_utils.dart (Principal)
+
+```dart
+import 'package:strawti_utils/strawti_utils.dart';
+```
+
+Exporta todos os componentes do package.
+
+#### utils.dart (Utilitários Básicos)
+
+```dart
+import 'package:strawti_utils/utils.dart';
+```
+
+Exporta apenas helpers e utilitários básicos:
+
+- `StrautilsDateTimeHelper`
+- `ternaryClean`
+
+#### infra.dart (Infraestrutura)
+
+```dart
+import 'package:strawti_utils/infra.dart';
+```
+
+Exporta apenas componentes de infraestrutura:
+
+- `StrautilsResponse<T>`
+- `StrautilsTryThis`
+- `StrautilsDefaultErrors`
 
 ### Dependências
 
@@ -382,9 +425,9 @@ O package utiliza as seguintes dependências:
 
 ```yaml
 dependencies:
-    get_storage: ^2.1.1
-    in_app_review: ^2.0.9
-    in_app_update: ^4.2.3
+  get_storage: ^2.1.1
+  in_app_review: ^2.0.9
+  in_app_update: ^4.2.3
 ```
 
 ### Permissões Android
@@ -399,10 +442,20 @@ Para In-App Updates, adicione ao `android/app/src/main/AndroidManifest.xml`:
 
 ```yaml
 environment:
-    sdk: ^3.5.1
+  sdk: ^3.5.1
 ```
 
 ## 📝 Notas Importantes
+
+### Logging
+
+O package inclui sistema de logging automático:
+
+- **StrautilsResponse**: Logs automáticos para success, warning e error
+- **StrautilsTryThis**: Logs para tratamento customizado de erros
+- **StrautilsDefaultErrors**: Logs para erros desconhecidos
+
+Os logs usam `dart:developer` e incluem contexto relevante para debugging.
 
 ### In-App Review
 
