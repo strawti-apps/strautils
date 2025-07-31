@@ -1,20 +1,21 @@
 name: strawti_utils
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: Uma biblioteca Flutter/Dart com utilitários e componentes padronizados para desenvolvimento de aplicações, incluindo gerenciamento de respostas, widgets reutilizáveis, validadores e integrações nativas.
+version: 1.1.0
+repository: https://github.com/your-org/strawti_utils
+homepage: https://github.com/your-org/strawti_utils
+documentation: https://github.com/your-org/strawti_utils#readme
 
 environment:
   sdk: ^3.5.1
 
 # Add regular dependencies here.
 dependencies:
-
   flutter:
     sdk: flutter
 
-  get_storage: ^2.1.1
-  in_app_review: ^2.0.9
-  in_app_update: ^4.2.3
+  get_storage: any
+  in_app_review: any
+  in_app_update: any
 
   # path: ^1.8.0
 

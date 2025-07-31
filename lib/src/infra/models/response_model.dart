@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 enum StrautilsResponseTypes { success, warning, error }
 
 typedef FStrautilsResponse<T> = Future<StrautilsResponse<T>>;
@@ -55,6 +57,7 @@ final class StrautilsResponse<T> {
   /// status é [StrautilsResponseTypes.success].
   /// tryAgain retorna [StrautilsResponse.success] por padrão.
   factory StrautilsResponse.success(T data, {String message = ''}) {
+    log("$message => $data", name: "StrautilsResponse.success");
     return StrautilsResponse(
       data: data,
       status: StrautilsResponseTypes.success,
@@ -73,6 +76,7 @@ final class StrautilsResponse<T> {
     dynamic data,
     Future<StrautilsResponse<T>> Function()? tryAgain,
   }) {
+    log("$message => $data", name: "StrautilsResponse.warning");
     return StrautilsResponse(
       data: data,
       status: StrautilsResponseTypes.warning,
@@ -95,7 +99,9 @@ final class StrautilsResponse<T> {
     String message, {
     dynamic data,
     Future<StrautilsResponse<T>> Function()? tryAgain,
+    Object? error,
   }) {
+    log("$message => $error", name: "StrautilsResponse.error");
     return StrautilsResponse(
       data: data,
       status: StrautilsResponseTypes.error,

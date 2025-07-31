@@ -1,7 +1,7 @@
 /// RegExp(r"^[A-Za-zÀ-ÖØ-öø-ÿ]+(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)*$")
 String? validateName(
   String? value, {
-  String emptyMessage = "Campo obrigátorio!",
+  String emptyMessage = "Campo obrigatório!",
   String invalidMessage = "O nome informado é inválido!",
 }) {
   if (value?.trim().isEmpty ?? true) {
